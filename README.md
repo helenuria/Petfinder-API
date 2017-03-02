@@ -29,5 +29,5 @@ You can read about Petfinder’s API [here](https://www.petfinder.com/developers
 When you send any query through the Petfinder API, they require one of your arguments to be a key.  I’ll explain exactly what these means later, but know that it is not unusual - most APIs ask for something called a developer key or API key. It’s a piece of information that identifies who you are and let’s them know you’ve asked for permission to use the API ahead of time. Think of it like a secret password to get into a club (except everyone at the club has their own unique password.) 
 
 Getting a key from Petfinder is easy. The first thing you need to do is sign up for an account.  Go to the [home page](www.petfinder.com) and click ‘Sign In’ at the top right. Then, click the ‘Register Now’ button and fill in your information.
-![Registration page](/PetfinderCreateAccountNoInfo.png "Petfinder registration form")
+![Registration page](PetfinderCreateAccountNoInfo.png "Petfinder registration form")
 test
