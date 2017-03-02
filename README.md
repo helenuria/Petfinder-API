@@ -68,9 +68,19 @@ var apiKey = '###################'; // assign our key to a variable, easier to r
 ```
 
 The next few lines of the script just deal with setting up our button. Remember, this call will hinge on the user entering a zipcode into a form and hitting the submit button
-![script](PetButtonCode.png "script to set up the button")
+```javascript
+// the next line and function set up the button in our html to be clickable and reactive 
+document.addEventListener('DOMContentLoaded', bindButtons);
 
-payload is the variable name we’re using to store the form return, and payload.zip will have the actual zipcode. This will come up later when we are filling out our query attributes.
+function bindButtons(){
+	document.getElementById('submitZip').addEventListener('click', function(event){
+		event.preventDefault();
+		var payload = {zip:null};
+		payload.zip = document.getElementById('zip').value; // this line gets the zip code from the form entry
+		var url = 'http://api.petfinder.com/pet.getRandom';
+```
+
+`payload` is the variable name we’re using to store the form return, and `payload.zip` will have the actual zipcode. This will come up later when we are filling out our query attributes.
 
 ### JSONP and Making the Call
 
