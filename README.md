@@ -83,5 +83,6 @@ function bindButtons(){
 `payload` is the variable name we’re using to store the form return, and `payload.zip` will have the actual zipcode. This will come up later when we are filling out our query attributes.
 
 ### JSONP and Making the Call
+Before we get into the actual script we'll use to make this call, we need to talk a little about **JSONP** and **Cross Origin Resource Sharing (CORS)** 
 
 ### Navigating the Response
