@@ -91,6 +91,30 @@ This is where CORS comes in. CORS is a general term for any technique that bypss
 
 Most widespread, public APIs include a header in their response that notifies the browser that even though they are coming from a different origin, you should trust them. When your browser sees that header, it will accept the response and run the code.  This makes using the API very easy, you can just use an ordinary ajax call. Of course, by querying an API with this CORS technique, you are implictly agrees to accept and run their resposne no matter what- so it's important to be careful and do your research on any API before using it. [Here](https://spring.io/understanding/CORS) is a very good documentation of this CORS method, if you're interested.
 
-That's the genreal state of cross origin requests and APIs. Unfortunately, the Petfinder API does not use the CORS technique described above. Instead it supports JSONP, which stands for **JSON with Padding**. 
+That's the genreal state of cross origin requests and APIs. Unfortunately, the Petfinder API does not use the CORS technique described above. Instead it supports JSONP, which stands for **Javascript Object Notation with Padding**. Remember that the browser won't execute code from another origin. But an HTML page will execute a `<script>` tag from any source. JSONP takes advantage of this. Instead of sending it's response back in XML or JSON, a server suporting JSONP will send a script block, which passes the data as an argument in a function. Your browser will then execute the function, allowing you to access the data. If you're still confused, you can read more about it [here](https://jvaneyck.wordpress.com/2014/01/07/cross-domain-requests-in-javascript/). Another important note is that JSONP has two limitations. First, it can only be used for GET queries. Second, it opens a developer up to the same vulnerabilitys as the standard CORS technique described above.
+
+Let's get back to our Petifinder query. We want to use the `pet.getRandom` method of the API. According for the documentation, the format of a GET query is: `http://api.petfinder.com/my.method?key=12345&arg1=foo`. `my.method` will pet.getRandom, `key` is our API key, and `arg1` can be any argument associated with the method. You can see a full list of the arguments associated with pet,getRandom in the documentation. If you do, you'll see that only key is required, all other are option. To narrow our serach of all animals in the world down to just just all cats in our zip code, we'll pass the arument `animal=cat`, and `location=payload.zip`. We'll also ask that `output=basic`, which will return some but not all possible data field sassociated with the cat. 
+
+![pet.getRandom](PetMethod.png)
+
+If we want to make this a cross origin request, we need to add two more arguments to the url. `format=json` will tell the server our request is formatted in JSON and `callback=?`tells the server we want our resonse to be in JSONP. The format you might expect to see for this url is `'http://api.petfinder.com/pet.getRandom?key=' + apiKey + '&animal=cat&location=' + payload.zip + '&output=basic&format=json&callback=?'` But recall that we included a jQuery library in our html. This will allow us to write out our ajax/JSONP query in JSON. The first section of the call will look like so:
+```JSON 	
+	var url = 'http://api.petfinder.com/pet.getRandom';
+		
+	// Within $.ajax{...} is where we fill out our query 
+
+	$.ajax({
+			url: url,
+			jsonp: "callback",
+			dataType: "jsonp",
+			data: {
+				key: apiKey,
+				animal: 'cat',
+				'location': payload.zip,
+				output: 'basic',
+				format: 'json'
+			},
+```
+This contains all the arguments we would put into our url, just listed in a different, more human readable notation. 
 
 ### Navigating the Response
