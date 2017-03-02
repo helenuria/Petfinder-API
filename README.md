@@ -30,3 +30,4 @@ When you send any query through the Petfinder API, they require one of your argu
 
 Getting a key from Petfinder is easy. The first thing you need to do is sign up for an account.  Go to the [home page](www.petfinder.com) and click ‘Sign In’ at the top right. Then, click the ‘Register Now’ button and fill in your information.
 [register]: /PetfinderCreateAccountNoInfo.png "Petfinder registration form"
+test
