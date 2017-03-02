@@ -30,4 +30,24 @@ When you send any query through the Petfinder API, they require one of your argu
 
 Getting a key from Petfinder is easy. The first thing you need to do is sign up for an account.  Go to the [home page](www.petfinder.com) and click ‘Sign In’ at the top right. Then, click the ‘Register Now’ button and fill in your information.
 ![Registration page](PetfinderCreateAccountNoInfo.png "Petfinder registration form")
-test
+
+Pro tip: you can opt out of the checkbox at the bottom and still successfully register.
+
+Once you’ve registered navigate to the developer information page, either by clicking [here](https://www.petfinder.com/developers/api-key), or scrolling to the bottom of the page and clicking ‘For Developers’. 
+![Developer link](PetDeveloperMarked.png "Link to Developers page")
+
+This will bring you right to the key request page, pictured below. Select the Reason for use from the dropdown, check the terms and service button, and hit the ‘Request a Key’ button. 
+![Key Registration page](PetRegisterKeyMarked.png "API key registration form")
+
+You’re done! Your API Key will be automatically generated, and you’ll be redirected to that page. You also get something called an API Secret. You would need this if you were going to use the API to request private information, like user data. Our tutorial is only using public data so I won’t go into it, but you can read more about it in the [documentation](https://www.petfinder.com/developers/api-docs) if you’re interested. 
+
+![API key](PetKeyMarked.png "API key")
+
+Note- I’ve obscured my key and secret for security reasons. But it doesn’t take long to request your own!
+
+Now that you have your key, you’re almost ready to send queries to the database.  But first, let’s talk about the HTML side of our project. 
+
+# Our HTML
+Recall that our goal is to create a search bar that takes a zip code and returns the name and image of a local, adoptable cat. To achieve this, we’ll need a form to take the zip code, and a button that will kick off our query to Petfinder. This doesn’t really have much to do with the API, so we won’t spend too much time on it. But there is one thing I’d like to highlight.
+
+For reasons we’ll get into later, we’re going to need to use something called JSONP in our API call. JSONP can be tricky to work with, so we are add on something called JQuery. JQuery is a Javascript library that will let us write a JSONP call, which can be hard, in a similar way we would write any Ajax call, which is much easier. Below is the section of our html where we include our script  file, just before the closing body tag. We’ve added a source attribute to this tag. It links to the JQuery library we need, hosted by Google. This is how we ‘include’ the library so we can use its functionality in our code. 
