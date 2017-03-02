@@ -83,6 +83,14 @@ function bindButtons(){
 `payload` is the variable name we’re using to store the form return, and `payload.zip` will have the actual zipcode. This will come up later when we are filling out our query attributes.
 
 ### JSONP and Making the Call
-Before we get into the actual script we'll use to make this call, we need to talk a little about **JSONP** and **Cross Origin Resource Sharing (CORS)** 
+Before we get into the actual script we'll use to make this call, we need to talk a little about the **Same Origin Policy  (SOP)**, **Cross Origin Resource Sharing (CORS)**, and **JSONP**. 
+
+Most API's adhere to some version of the SOP. That means that while one origin can send information to another origin, it cannot recieve information from a different origin. This makes sense, 'receiving information' is just another way of saying 'interpreting code'. If that code is from another origin, it's foregin, and may be malicious. However, you can see how this would be a problem. Our gaol is to send a query from our brower, and get information back from Petfinder's server. But the Petfinder API adheres to SOP. When our browser sees that the request and response are comining from different origins it will refuse to interpret the response.
+
+This is where CORS comes in. CORS is a general term for any technique that bypsses an SOP. There are many ways for an API to say that while we may be dealing with different origins, we should trust them. Cross Origin Resource Sharing describes methods for sharing information (resources) across different origins. 
+
+Most widespread, public APIs include a header in their response that notifies the browser that even though they are coming from a different origin, you should trust them. When your browser sees that header, it will accept the response and run the code.  This makes using the API very easy, you can just use an ordinary ajax call. Of course, by querying an API with this CORS technique, you are implictly agrees to accept and run their resposne no matter what- so it's important to be careful and do your research on any API before using it. [Here](https://spring.io/understanding/CORS) is a very good documentation of this CORS method, if you're interested.
+
+That's the genreal state of cross origin requests and APIs. Unfortunately, the Petfinder API does not use the CORS technique described above. Instead it supports JSONP, which stands for **JSON with Padding**. 
 
 ### Navigating the Response
