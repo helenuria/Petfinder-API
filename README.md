@@ -63,7 +63,9 @@ For more information on JQuery click [here](https://www.w3schools.com/jquery/jqu
 # Our Script
 ### Setting Up the Button
 The very first line of the script assigns our API to a variable. It’s a long, awkward string, so it will keep the code more readable to put it into a variable.
-![key](PetKeyMarked.png "Our key (obscured)")
+```javascript
+var apiKey = '###################'; // assign our key to a variable, easier to read
+```
 
 The next few lines of the script just deal with setting up our button. Remember, this call will hinge on the user entering a zipcode into a form and hitting the submit button
 ![script](PetButtonCode.png "script to set up the button")
