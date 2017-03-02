@@ -51,3 +51,20 @@ Now that you have your key, you’re almost ready to send queries to the databas
 Recall that our goal is to create a search bar that takes a zip code and returns the name and image of a local, adoptable cat. To achieve this, we’ll need a form to take the zip code, and a button that will kick off our query to Petfinder. This doesn’t really have much to do with the API, so we won’t spend too much time on it. But there is one thing I’d like to highlight.
 
 For reasons we’ll get into later, we’re going to need to use something called JSONP in our API call. JSONP can be tricky to work with, so we are add on something called JQuery. JQuery is a Javascript library that will let us write a JSONP call, which can be hard, in a similar way we would write any Ajax call, which is much easier. Below is the section of our html where we include our script  file, just before the closing body tag. We’ve added a source attribute to this tag. It links to the JQuery library we need, hosted by Google. This is how we ‘include’ the library so we can use its functionality in our code. 
+![Html](Pethtml.png "Our html")
+
+For more information on JQuery click [here](https://www.w3schools.com/jquery/jquery_intro.asp), and for more information on Google Hosted Libraries, click [here](https://developers.google.com/speed/libraries/#jquery).
+
+# Our Script
+### Setting Up the Button
+The very first line of the script assigns our API to a variable. It’s a long, awkward string, so it will keep the code more readable to put it into a variable.
+![key](PetKeyVar.png "Our key (obscured)")
+
+The next few lines of the script just deal with setting up our button. Remember, this call will hinge on the user entering a zipcode into a form and hitting the submit button
+![script](PetButtonCode.png "script to set up the button")
+
+payload is the variable name we’re using to store the form return, and payload.zip will have the actual zipcode. This will come up later when we are filling out our query attributes.
+
+### JSONP and Making the Call
+
+### Navigating the Response
