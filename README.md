@@ -12,7 +12,7 @@ In this tutorial we’ll make use of the Petfinder API with HTML, Javascript, AJ
 * Navigating the Response
 
 ### Final product
-We will build a form that takes a zip code, calls the Petfinder API, and returns the name, image, and location of a nearby adoptable cat.
+We will build a form that takes a zip code, calls the Petfinder API, and returns the name, image, and link to the adoption page of a nearby adoptable cat.
 
 ### References
 [Petfinder API documentation](https://www.petfinder.com/developers/api-docs)
@@ -25,7 +25,7 @@ We will build a form that takes a zip code, calls the Petfinder API, and returns
 
 # What’s an API?
 
-Let's say you have a cat. If you have a cat, you probably also have a blog about that cat. One day it occurs to you that all the people looking at pictures of your cat might like to have their own. You want to put a search bar in your blog where people can search for adoptable pets near them. Unfortunately, you don’t have the time or resources to build a database of all the adoptable pets in the world. You could link your users to petfinder.com, ****CHANGE THIS**** You want to keep readers engaged and on your site. Luckily for you- there are enough cat blogs on the internet that this is a solved problem, and that’s where APIs come in.
+Let's say you have a cat. If you have a cat, you probably also have a blog about that cat. One day it occurs to you that all the people looking at pictures of your cat might like to have their own. You want to put a search bar in your blog where people can search for adoptable pets near them. Unfortunately, you don’t have the time or resources to build a database of all the adoptable pets in the world. Luckily for you- there are enough cat blogs on the internet that this is a solved problem, and that’s where APIs come in.
 
 **API** stands for **Application Programming Interface**. APIs are provided by the developers of a piece of software. Using the API, other developers can query and receive data from that software, and integrate it into their own, separate software. Petfinder.com offers an API with built in methods that can find and return pet and shelter information from their database.
 You can read about Petfinder’s API [here](https://www.petfinder.com/developers/api-docs). Their documentation is very straightforward and thorough, so this tutorial won’t spend too much time restating it. Instead I’ll talk briefly about getting set up with a developer key, and then go into detail on a specific method. If you’re interested in learning more about the required arguments and response formats for every method, it's listed in the documetnation.  
@@ -113,3 +113,5 @@ If we want to make this a cross origin request, we need to add two more argument
 This contains all the arguments we would put into our url, just listed in a different, more human readable notation. 
 
 ### Navigating the Response
+
+
