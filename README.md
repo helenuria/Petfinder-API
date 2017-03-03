@@ -93,7 +93,7 @@ Let's get back to our Petifinder query. We want to use the `pet.getRandom` metho
 ![pet.getRandom](PetMethod.png "pet.getRandom documentation")
 
 If we want to make this a cross origin request, we need to add two more arguments to the url. `format=json` will tell the server our request is formatted in JSON and `callback=?`tells the server we want our resonse to be in JSONP. The format you might expect to see for this url is `'http://api.petfinder.com/pet.getRandom?key=' + apiKey + '&animal=cat&location=' + zip + '&output=basic&format=json&callback=?'` But recall that we included a jQuery library in our HTML. This automates the JSONP formatting. The first section of the call will look like so:
-```JSON 	
+```javascript 	
 	var url = 'http://api.petfinder.com/pet.getRandom';
 		
 	// Within $.ajax{...} is where we fill out our query 
