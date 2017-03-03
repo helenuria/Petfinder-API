@@ -135,7 +135,7 @@ var img = response.petfinder.pet.media.photos.photo[0].$t;
 var newImg = document.createElement('img');
 newImg.src = img;
 			
-var list = document.createElement("ul");
+var list = document.createElement("div");
 list.setAttribute("id", "List");
 document.body.appendChild(list);
 
@@ -151,7 +151,7 @@ var newDiv = document.createElement('div');
 newName.textContent = catName;
 newName.href = 'https://www.petfinder.com/petdetail/' + id;
 				
-var list = document.createElement("ul");
+var list = document.createElement("div");
 list.setAttribute("id", "List");
 document.body.appendChild(list);
 
@@ -226,7 +226,7 @@ function bindButtons(){
 				var newImg = document.createElement('img');
 				newImg.src = img;
 				
-				var list = document.createElement("ul");
+				var list = document.createElement("div");
 				list.setAttribute("id", "List");
 				document.body.appendChild(list);
 
