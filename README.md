@@ -16,11 +16,17 @@ We will build a form that takes a zip code, calls the Petfinder API, and returns
 
 ### References
 [Petfinder API documentation](https://www.petfinder.com/developers/api-docs)
+
 [JSONP/JQuery](https://learn.jquery.com/ajax/working-with-jsonp/)
+
 [JSONP](https://jvaneyck.wordpress.com/2014/01/07/cross-domain-requests-in-javascript/)
+
 [JQuery(1)](https://developers.google.com/speed/libraries/#jquery)
+
 [JQuery(2)](https://www.w3schools.com/jquery/jquery_intro.asp)
+
 [SOP](https://www.w3.org/Security/wiki/Same_Origin_Policy)
+
 [CORS](https://spring.io/understanding/CORS)
 
 # What’s an API?
