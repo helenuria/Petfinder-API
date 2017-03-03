@@ -7,7 +7,7 @@ function bindButtons(){
 	document.getElementById('submitZip').addEventListener('click', function(event){
 		event.preventDefault();
 		var zip = document.getElementById('zip').value; // this line gets the zip code from the form entry
-		var url = 'http://api.petfinder.com/pet.getRandom';
+		var url = 'https://api.petfinder.com/pet.getRandom';
 		
 		// Within $.ajax{...} is where we fill out our query 
 		$.ajax({
