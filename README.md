@@ -141,7 +141,7 @@ document.body.appendChild(list);
 
 list.appendChild(newImg);
 ```
-The link was more interesting. Pet pages in petfinder all start with the url `https://www.petfinder.com/petdetail/` followed by the Pet ID. So the Pet ID was extraced from response and concatenated with the url. But, we wanted the link shortcut to be the pet's name. So name variable is saved as an 'a' element', andthe url + id was assigned to the href attribute of the link, shown below:
+The link was more interesting. Pet pages in petfinder all start with the url `https://www.petfinder.com/petdetail/` followed by the Pet ID. So the Pet ID was extraced from response and concatenated with the url. But, we wanted the link shortcut to be the pet's name. So name variable was saved as an 'a' element, and the url + id was assigned to the href attribute of the link, shown below:
 ```javascript
 var catName = response.petfinder.pet.name.$t;
 var id = response.petfinder.pet.id.$t;
