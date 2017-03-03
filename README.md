@@ -129,6 +129,36 @@ var catName = response.petfinder.pet.name.$t;
 ```
 This path takes you through the data object and returns the cat's name under the variable `catName`.
 
+We have recieved our response and extracted the data we need. The only thing left is to send it back to the form page. We can just do this with DOM commands. We first declared new variables for each piece of information, set equal to `document.createElement('element');`. Each piece of data extracted from the response was assigned to its elenment and appended to the html page as a list. For example with the image:
+```javascript
+var img = response.petfinder.pet.media.photos.photo[0].$t;
+var newImg = document.createElement('img');
+newImg.src = img;
+			
+var list = document.createElement("ul");
+list.setAttribute("id", "List");
+document.body.appendChild(list);
+
+list.appendChild(newImg);
+```
+The link was more interesting. Pet pages in petfinder all start with the url `https://www.petfinder.com/petdetail/` followed by the Pet ID. So the Pet ID was extraced from response and concatenated with the url. But, we wanted the link shortcut to be the pets name. So the url + id was assigned with the dot operator as href to the name variable, shown below:
+```javascript
+var catName = response.petfinder.pet.name.$t;
+var id = response.petfinder.pet.id.$t;
+				
+var newName = document.createElement('a');
+var newDiv = document.createElement('div');
+newName.textContent = catName;
+newName.href = 'https://www.petfinder.com/petdetail/' + id;
+				
+var list = document.createElement("ul");
+list.setAttribute("id", "List");
+document.body.appendChild(list);
+
+newDiv.appendChild(newName);
+list.appendChild(newDiv);
+```
+
 # Final Project
 In this tutorial we have attained an API key, set up a form with html, overcome the SOP using JSONP/JQuery, and sent an API query. It was a lot of work, but definitely worth it to bring even one cat closer to finding a loving home. Here's the full HTML and Javascript for the project, as well as a (working!) example of the result:
 
