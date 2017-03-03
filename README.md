@@ -176,16 +176,12 @@ In this tutorial we have attained an API key, set up a form with html, overcome 
 	</head>
 	<body>
 		<form>
-			<fieldset>
 				<legend> Find A Cat Near You! </legend>
 				<label for="zip">Zip</label>
 				<input type="text" name="zip" id="zip">
 				<input type="submit" id="submitZip">
-			</fieldset>
 		</form>
-		<div>
-			<h2>Cat</h2>
-		</div>
+		
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src='script.js'></script>
 	</body>
