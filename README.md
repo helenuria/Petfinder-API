@@ -115,7 +115,7 @@ This contains all the arguments we would put into our url, just listed in a diff
 ### Navigating the Response
 The repsonse from Petfinder is sent in JSONP format, so it does not need to be parsed the way JSON does. Instead it will be logged as an argument of a function, like so:
 ```javascript
-succes: function(response){
+success: function(response){
 ...
 }
 ```
