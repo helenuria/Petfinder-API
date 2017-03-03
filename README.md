@@ -113,7 +113,7 @@ If we want to make this a cross origin request, we need to add two more argument
 This contains all the arguments we would put into our url, just listed in a different, more human readable notation. 
 
 ### Navigating the Response
-The repsonse from the request is sent in JSONP format, so it does not need to be parsed the way JSON does. Instead it will be logged asan argument of a function, like so:
+The repsonse from Petfinder is sent in JSONP format, so it does not need to be parsed the way JSON does. Instead it will be logged as an argument of a function, like so:
 ```javascript
 succes: function(response){
 ...
