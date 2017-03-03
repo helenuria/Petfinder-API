@@ -113,5 +113,104 @@ If we want to make this a cross origin request, we need to add two more argument
 This contains all the arguments we would put into our url, just listed in a different, more human readable notation. 
 
 ### Navigating the Response
+The repsonse from the request is sent in JSONP format, so it does not need to be parsed the way JSON does. Instead it will be logged asan argument of a function, like so:
+```javascript
+succes: function(response){
+...
+}
+```
+Still, there is a lot of data in the repsonse and it can be challenging to extract pieces from. By running `console.log()` we can see the data object in our console. 
+
+![console response](PetResponseMarked.png "response object")
+
+There's a lot of information here, but it's laid out in a simple pattern. I've hilighted the information we need to extract (the animals name, image, and id number), each tier has the same color. To get to a data point, you navigate through each tier. For example:
+```javascript
+var catName = response.petfinder.pet.name.$t;
+```
+This path takes you through the data object and returns the cat's name under the variable `catName`.
+
+# Final Project
+In this tutorial we have attained an API key, set up a form with html, overcome the SOP using JSONP/JQuery, and sent an API query. It was a lot of work, but definitely worth it to bring even one cat closer to finding a loving home. Here's the full HTML and Javascript for the project, as well as a (working!) example of the result:
+
+### HTML
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+		<form>
+			<fieldset>
+				<legend> Find A Cat Near You! </legend>
+				<label for="zip">Zip</label>
+				<input type="text" name="zip" id="zip">
+				<input type="submit" id="submitZip">
+			</fieldset>
+		</form>
+		<div>
+			<h2>Cat</h2>
+		</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src='script.js'></script>
+	</body>
+</html>
+
+```
+### Javascript
+```javascript
+var apiKey = '2f95f51b181ddd27883e91878e922466'; // assign our key to a variable, easier to read
+
+// the next line and function set up the button in our html to be clickable and reactive 
+document.addEventListener('DOMContentLoaded', bindButtons);
+
+function bindButtons(){
+	document.getElementById('submitZip').addEventListener('click', function(event){
+		event.preventDefault();
+		var zip = document.getElementById('zip').value; // this line gets the zip code from the form entry
+		var url = 'http://api.petfinder.com/pet.getRandom';
+		
+		// Within $.ajax{...} is where we fill out our query 
+		$.ajax({
+			url: url,
+			jsonp: "callback",
+			dataType: "jsonp",
+			data: {
+				key: apiKey,
+				animal: 'cat',
+				'location': zip,
+				output: 'basic',
+				format: 'json'
+			},
+			// Here is where we handle the response we got back from Petfinder
+			success: function( response ) {
+				console.log(response); // debugging
+				var catName = response.petfinder.pet.name.$t;
+				var img = response.petfinder.pet.media.photos.photo[0].$t;
+				var id = response.petfinder.pet.id.$t;
+
+				var newName = document.createElement('a');
+				var newDiv = document.createElement('div');
+				newName.textContent = catName;
+				newName.href = 'https://www.petfinder.com/petdetail/' + id;
+
+				var newImg = document.createElement('img');
+				newImg.src = img;
+				
+				var list = document.createElement("ul");
+				list.setAttribute("id", "List");
+				document.body.appendChild(list);
+
+				newDiv.appendChild(newName);
+				list.appendChild(newDiv);
+				list.appendChild(newImg);
+			}
+		});
+		})
+
+}
+
+```
+
+### Result
 
 <iframe src="pets.html" width="200" height="400"> </iframe>
